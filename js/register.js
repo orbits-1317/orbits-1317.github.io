@@ -1,3 +1,4 @@
+// Submit
 function validateAndShowDialog() {
   const nickname = document.getElementById('name');
   const identity = document.getElementById('number');
@@ -46,6 +47,7 @@ function validateAndShowDialog() {
   }
   // Dialog
   if (isValid) {
+    showMessage(null);
     window.dialog.showModal();
   }
 }
@@ -64,6 +66,31 @@ document.getElementById('phone').addEventListener('input', function (e) {
   input.value = value;
 });
 
+// Utility
+function showMessage(messageType) {
+  const successMessage = document.getElementById('mail_success');
+  const failMessage = document.getElementById('mail_fail');
+  // Reset
+  successMessage.style.display = 'none';
+  failMessage.style.display = 'none';
+  // Failure n Success
+  if (messageType === 'success') {
+    successMessage.style.display = 'block';
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+    }, 4500);
+  } else if (messageType === 'fail') {
+    failMessage.style.display = 'block';
+  }
+}
+
+// btn-cancel
+function processCancel() {
+  window.dialog.close();
+  showMessage('fail');
+}
+
+// btn-confirm
 function processAndSend() {
   const nickname = document.getElementById('name').value.trim();
   const identity = document.getElementById('number').value.trim();
@@ -75,6 +102,7 @@ function processAndSend() {
   const targetLink = `${baseURL}?text=${text}`;
 
   window.dialog.close();
+  showMessage('success');
 
   setTimeout(() => {
     window.location.href = targetLink;
