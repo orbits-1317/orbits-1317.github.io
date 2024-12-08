@@ -4124,6 +4124,13 @@ border:solid 1px #ddd;
 	
 	/* team
 	/* ================================================== */
+
+	.justify-team {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
 	.team {
 	margin-bottom: 30px;
 	text-align:center;
