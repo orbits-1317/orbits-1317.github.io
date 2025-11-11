@@ -1041,8 +1041,19 @@ jQuery(document).ready(function () {
         // --------------------------------------------------
         // tabs
         // --------------------------------------------------
-        jQuery('.de_tab').find('.de_tab_content > div').hide();
-        jQuery('.de_tab').find('.de_tab_content > div:first').show();
+        jQuery('.de_tab').each(function() {
+            var $tab = jQuery(this);
+            var $active = $tab.find('.de_nav li.active');
+            var activeIndex = $active.index();
+            $tab.find('.de_tab_content > div').hide();
+          
+            if (activeIndex >= 0) {
+              $tab.find('.de_tab_content > div').eq(activeIndex).show();
+            } else {
+              $tab.find('.de_tab_content > div:first').show();
+            }
+          });
+
         jQuery('li').find('.v-border').fadeTo(150, 0);
         jQuery('li.active').find('.v-border').fadeTo(150, 1);
 
