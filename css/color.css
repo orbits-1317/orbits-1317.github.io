@@ -232,3 +232,7 @@ blockquote.s1{
 *::-webkit-scrollbar-thumb {
   background-color: transparent;border-radius: 1em;
 }
+
+.id-color-purle {
+	color: #d341d0 !important;
+}
